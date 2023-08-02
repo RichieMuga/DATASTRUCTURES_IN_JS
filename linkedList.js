@@ -33,37 +33,6 @@ class MyLinkedList {
         this.length++
         return this
     }
-
-    // FAILED: This code is too complex to try and create an insert function
-
-    // insert(index, value) {
-    //     //Step 1: create a while loop going through the this.head object, this while loop should run as long as the this.head.next != null
-    //     while (this.head.next != null) {
-    //         //Step 2: create a variable for housing the new Node
-    //         const newNode = {
-    //             value: value,
-    //             next: null
-    //         }
-    //         //if this.head.next == null then insert the newNode
-    //         if (this.head.next === null) {
-    //             this.head.next = newNode
-    //             console.log("This is at the tail")
-    //         }
-    //         else {
-    //             //Step 3: if index is found, insert the newNode
-    //             if (index) {
-    //                 //insert the newNode and point to the next index
-    //                 this.head = newNode
-    //                 this.head.next = this.head
-    //             }
-    //         }
-    //         index++
-    //     }
-    // }
-    // Approach it by first creating an array of the numbers pointing to each other
-
-    // END OF FAILED CODE
-
     printList(){
         // Create an empty array
         const array = []
