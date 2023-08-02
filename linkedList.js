@@ -40,11 +40,11 @@ class MyLinkedList {
         let currentNode = this.head
         // Create a loop where the value in the this.head is known and the next is what we change the current node to
         while (currentNode !== null){
-            console.log(array);
             // keep pushing the value of the node to it until we go the next and onwards
             array.push(currentNode.value)
             currentNode = currentNode.next
         }
+        return array
     }
 }
 
@@ -53,5 +53,5 @@ myLinkedList.prepend(19)
 myLinkedList.prepend(198)
 console.log(myLinkedList)
 console.log("THIS IS THE NEXT LINE")
-myLinkedList.printList()
+console.log(myLinkedList.printList());
 
