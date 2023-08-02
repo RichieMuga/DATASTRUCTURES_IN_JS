@@ -46,6 +46,26 @@ class MyLinkedList {
         }
         return array
     }
+    insert(index,value){
+        //get the array
+        // Create an empty array
+        let array = []
+        // Create a current node to measure the node we currently are in since we need to track it
+        let currentNode = this.head
+        // Create a loop where the value in the this.head is known and the next is what we change the current node to
+        while (currentNode !== null) {
+            // keep pushing the value of the node to it until we go the next and onwards
+            array.push(currentNode.value)
+            currentNode = currentNode.next
+        }
+        //find the index of the array
+        if (array) {
+            array[index]=value
+        }
+        console.log(array);
+
+
+    }
 }
 
 const myLinkedList = new MyLinkedList(12)
@@ -53,5 +73,5 @@ myLinkedList.prepend(19)
 myLinkedList.prepend(198)
 console.log(myLinkedList)
 console.log("THIS IS THE NEXT LINE")
-console.log(myLinkedList.printList());
+console.log(myLinkedList.insert(1, 99));
 
