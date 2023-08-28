@@ -35,14 +35,14 @@ class MyLinkedList {
         this.length++
         return this
     }
-    printList(){
+    printList() {
         // Create an empty array
         const array = []
         // Create a current node to measure the node we currently are in since we need to track it
         let currentNode = this.head
         // Create a loop where the value in the this.
         // use a while loop because we do not know the length of our list
-        while (currentNode !== null){
+        while (currentNode !== null) {
             // push the value into the empty array
             array.push(currentNode.value)
             // update the current value to read the next value in the list
@@ -51,16 +51,39 @@ class MyLinkedList {
         console.log(array);
         return array
     }
+    insert(index, value) {
+        const newNode = {
+            value,
+            next:null
+        }
+        // This is the index before the index that was being pointed in the params
+        const indexBeforeTheActualIndex = this.transverseToIndex(index-1)
+        // This is the index on the params, we need it to point to the next, leaving a blank space
+        const indexOnTheActualIndex = indexBeforeTheActualIndex.next
 
-  transverseToIndex(index){
-    let counter = 0
-    let currentNode = this.head
-    while (counter <= index) {
-        currentNode = currentNode.next
-        counter++
+        indexBeforeTheActualIndex.next = newNode
+        newNode.next = indexOnTheActualIndex
+
     }
-    return currentNode
-  }
+    remove(index){
+        // I need to get the index before the actual index being mentioned i.e index-1
+        const indexBefoeActualIndex = this.transverseToIndex(index-1)
+        // I need to get the index after the actual index being mentioned i.e the currentNode.next
+        const indexAfterActualIndex = this.transverseToIndex(index + 1)
+        // I need to remove the actual index
+        indexBefoeActualIndex.next = indexAfterActualIndex
+    }
+    transverseToIndex(index){
+        let counter = 0
+        let currentNode = this.head
+
+        while (counter !==index ) {
+            currentNode = currentNode.next
+            counter++
+        }
+
+        return currentNode
+    }
 }
 
 const myLinkedList = new MyLinkedList(12)
@@ -69,7 +92,10 @@ myLinkedList.append(19)
 
 
 console.log("THIS IS THE NEXT LINE")
+myLinkedList.insert(1, 2)
+myLinkedList.remove(2)
 myLinkedList.printList()
+
 
 
 
