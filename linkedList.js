@@ -20,8 +20,10 @@ class MyLinkedList {
             value: value,
             next: null
         }
+        this.tail.next = newNode
         this.tail = newNode
         this.length++
+        return this
     }
     prepend(value) {
         const newNode = {
@@ -38,40 +40,36 @@ class MyLinkedList {
         const array = []
         // Create a current node to measure the node we currently are in since we need to track it
         let currentNode = this.head
-        // Create a loop where the value in the this.head is known and the next is what we change the current node to
+        // Create a loop where the value in the this.
+        // use a while loop because we do not know the length of our list
         while (currentNode !== null){
-            // keep pushing the value of the node to it until we go the next and onwards
+            // push the value into the empty array
             array.push(currentNode.value)
+            // update the current value to read the next value in the list
             currentNode = currentNode.next
-        }
-        return array
-    }
-    insert(index,value){
-        //get the array
-        // Create an empty array
-        let array = []
-        // Create a current node to measure the node we currently are in since we need to track it
-        let currentNode = this.head
-        // Create a loop where the value in the this.head is known and the next is what we change the current node to
-        while (currentNode !== null) {
-            // keep pushing the value of the node to it until we go the next and onwards
-            array.push(currentNode.value)
-            currentNode = currentNode.next
-        }
-        //find the index of the array
-        if (array) {
-            array[index]=value
         }
         console.log(array);
-
-
+        return array
     }
+
+  transverseToIndex(index){
+    let counter = 0
+    let currentNode = this.head
+    while (counter <= index) {
+        currentNode = currentNode.next
+        counter++
+    }
+    return currentNode
+  }
 }
 
 const myLinkedList = new MyLinkedList(12)
-myLinkedList.prepend(19)
-myLinkedList.prepend(198)
-console.log(myLinkedList)
+myLinkedList.prepend(23)
+myLinkedList.append(19)
+
+
 console.log("THIS IS THE NEXT LINE")
-console.log(myLinkedList.insert(1, 99));
+myLinkedList.printList()
+
+
 
