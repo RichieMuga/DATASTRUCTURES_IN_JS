@@ -54,10 +54,10 @@ class MyLinkedList {
     insert(index, value) {
         const newNode = {
             value,
-            next:null
+            next: null
         }
         // This is the index before the index that was being pointed in the params
-        const indexBeforeTheActualIndex = this.transverseToIndex(index-1)
+        const indexBeforeTheActualIndex = this.transverseToIndex(index - 1)
         // This is the index on the params, we need it to point to the next, leaving a blank space
         const indexOnTheActualIndex = indexBeforeTheActualIndex.next
 
@@ -65,24 +65,47 @@ class MyLinkedList {
         newNode.next = indexOnTheActualIndex
 
     }
-    remove(index){
+    remove(index) {
         // I need to get the index before the actual index being mentioned i.e index-1
-        const indexBefoeActualIndex = this.transverseToIndex(index-1)
+        const indexBefoeActualIndex = this.transverseToIndex(index - 1)
         // I need to get the index after the actual index being mentioned i.e the currentNode.next
         const indexAfterActualIndex = this.transverseToIndex(index + 1)
         // I need to remove the actual index
         indexBefoeActualIndex.next = indexAfterActualIndex
     }
-    transverseToIndex(index){
+    transverseToIndex(index) {
         let counter = 0
         let currentNode = this.head
 
-        while (counter !==index ) {
+        while (counter !== index) {
             currentNode = currentNode.next
             counter++
         }
 
         return currentNode
+    }
+    // exercise 1: reverse a linked list
+    reverse(){
+        //check if list only has one item, if it has one item only return the  linked list
+        if (this.head.next === null) {
+            return this.head
+        }
+        let first =  this.head
+
+        this.tail = this.head
+
+        let second = this.head.next
+
+
+        while (second !== null ) {
+            const temp = second.next
+            second.next = first
+            first = second
+            second = temp
+        }
+        this.head.next=null
+        this.head = first
+        return this
     }
 }
 
@@ -94,7 +117,9 @@ myLinkedList.append(19)
 console.log("THIS IS THE NEXT LINE")
 myLinkedList.insert(1, 2)
 myLinkedList.remove(2)
+myLinkedList.append(10)
 myLinkedList.printList()
+myLinkedList.reverse()
 
 
 
